@@ -4,10 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bestell App | BurgerHouse</title>
+    <link rel="icon" href="./assets/logo/Logo 02.png">
     <link rel="stylesheet" href="./style.css" />
     <script src="./script.js" defer></script>
+
 </head>
 <body>
-    
+    <header class="topbar">
+        <div class="topbar__inner">
+         <img class="brand-logo" src="./assets/logo/Logo 02.png" alt="Bestell-App Logo" />
+         <button class="icon-button" aria-label="Menü öffnen">
+           <img src="./logo/menu.png" alt="" /> 
+         </button>
+        </div>
+    </header>
+    <main>
+      <section class="restaurant-hero">
+        <img class="hero-image" src="./assets/img/hero photo.png.jpg" alt="Burger und Pizza auf einem Tisch" />
+        <img class="restaurant-logo" src="./assets/logo/logo burger.png.png" alt="BurgerHouse Logo" />
+        <div class="restaurant-info">
+          <div class="restaurant-title">
+            <h1>BurgerHouse</h1>
+            <span class="rating">★ 4.8</span>
+          </div>  
+          <p>Das Beste aus Burgern, Pizza und Salaten an einem Ort.</p>
+        </div>
+      </section>
+      <div class="page-layout">
+        <section class="menu-content" id="menuContent"></section>
+        <aside class="basket desktop-basket" aria-label="Warenkorb">
+          <div id="desktopBasket"></div>
+        </aside>
+      </div>
+    </main>
+    <button class="mobile-basket-button" id="openBasketButton" type="button">
+      Warenkorb ansehen <span id="mobileBasketTotal">0,00€</span>
+    </button>
+
+    <div class="dialog-backdrop hidden" id="basketDialog">
+      <aside class="basket mobile-basket" aria-label="Mobiler Warenkorb">
+        <button class="close-button" id="closeBasketButton" type="button" aria-label="Warenkorb schließen">×</button>
+        <div id="mobileBasket"></div>
+      </aside>
+    </div>
+
+    <div class="dialog-backdrop hidden" id="confirmationDialog">
+      <div class="confirmation">
+        <button class="close-button" id="closeConfirmationButton" type="button" aria-label="Meldung schließen">×</button>
+        <strong>🚚</strong>
+        <h2>Bestellung bestätigt!</h2>
+        <p>Dein Essen ist unterwegs!</p>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <span>© 2026 BurgerHouse</span>
+      <a href="#">Impressum</a>
+      <a href="#">Cookie-Einstellungen</a>
+    </footer>
+
 </body>
 </html>
