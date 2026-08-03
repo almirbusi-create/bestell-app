@@ -20,13 +20,17 @@ button {
 
 .topbar,
 .footer {
-  width: min(100%, 720px);
+  width: min(100%, 1440px);
   margin: 0 auto;
   background: #f36a12;
 }
 
+.topbar {
+  border: 3px solid #0aa8f0;
+}
+
 main {
-  width: min(100%, 720px);
+  width: min(100%, 1440px);
   margin: 0 auto;
   background: #ffffff;
 }
@@ -41,18 +45,19 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 56px;
-  padding: 0 50px;
+  height: 128px;
+  padding: 0 120px;
 }
 
 .brand-logo {
-  width: 54px;
-  height: auto;
+  width: 93px;
+  height: 38px;
+  object-fit: contain;
 }
 
 .icon-button {
-  width: 28px;
-  height: 28px;
+  width: 60px;
+  height: 60px;
   background: transparent;
 }
 
@@ -70,23 +75,29 @@ main {
 .hero-image {
   display: block;
   width: 100%;
-  height: 220px;
+  height: 508px;
   margin: 0 auto;
   object-fit: cover;
+  object-position: center 48%;
 }
 
 .restaurant-logo {
-  width: 104px;
-  height: 104px;
-  margin-top: -52px;
-  border: 4px solid #fff;
+  width: 200px;
+  height: 200px;
+  margin-top: -100px;
+  border: 8px solid #fff;
   border-radius: 50%;
   background: #fff;
   object-fit: cover;
 }
 
 .restaurant-info {
-  padding: 0 16px 6px;
+  display: grid;
+  align-content: center;
+  width: min(872px, 100%);
+  min-height: 104px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 .restaurant-title {
@@ -118,92 +129,119 @@ h1 {
 }
 
 .page-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
-  align-items: start;
-  gap: 32px;
-  padding: 0 96px 80px;
+  position: relative;
+  display: block;
+  padding: 0 0 128px;
 }
 
 .category-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin: 0 -96px 22px;
-  padding: 8px 16px;
+  justify-content: flex-start;
+  gap: 28px;
+  min-height: 91px;
+  margin: 0 0 22px;
+  padding: 0 0 0 160px;
   color: #fff;
   background: #f36a12;
 }
 
 .category-header img {
-  width: 48px;
-  height: 48px;
+  width: 72px;
+  height: 72px;
   object-fit: contain;
 }
 
 .category-header h2 {
   margin: 0;
-  font-size: 24px;
+  font-size: 34px;
+}
+
+.category-header--pizza {
+  min-height: 92px;
 }
 
 .category {
-  margin-bottom: 46px;
+  margin-bottom: 108px;
 }
 
 .meal-list {
   display: grid;
   gap: 16px;
-  max-width: 560px;
-  margin: 0 auto;
+  width: 712px;
+  max-width: calc(100% - 32px);
+  margin: 0 0 0 112px;
 }
 
 .meal-card {
   display: grid;
-  grid-template-columns: 150px minmax(0, 1fr) auto;
-  gap: 16px;
+  grid-template-columns: 207px 16px 354px 115px;
+  column-gap: 0;
   align-items: center;
+  width: 712px;
+  max-width: 100%;
+  height: 141px;
   padding: 10px;
   border-radius: 8px;
   background: #fff0e5;
 }
 
 .meal-card img {
-  width: 150px;
-  height: 92px;
+  grid-column: 1;
+  width: 207px;
+  height: 121px;
   border-radius: 8px;
   object-fit: cover;
 }
 
+.meal-info {
+  grid-column: 3;
+  width: 354px;
+  max-width: 100%;
+  height: 107px;
+  padding-top: 7px;
+}
+
 .meal-card h3 {
-  margin: 0 0 5px;
-  font-size: 17px;
+  margin: 0 0 6px;
+  font-size: 18px;
+  line-height: 1.15;
 }
 
 .meal-card p {
   margin: 0;
   font-size: 12px;
-  line-height: 1.35;
+  line-height: 1.28;
 }
 
 .meal-actions {
+  grid-column: 4;
   display: grid;
+  align-self: stretch;
   justify-items: end;
-  gap: 20px;
+  align-content: space-between;
+  width: 115px;
+  height: 107px;
+  padding-top: 7px;
+  padding-bottom: 0;
 }
 
 .price {
+  min-width: 74px;
+  font-size: 16px;
   font-weight: 800;
+  text-align: right;
 }
 
 .add-button,
 .buy-button {
-  min-width: 96px;
-  padding: 8px 12px;
+  min-width: 74px;
+  min-height: 29px;
+  padding: 6px 10px;
   border-radius: 999px;
   color: #3a302a;
   background: #fff;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 700;
 }
 
@@ -213,20 +251,33 @@ h1 {
 
 .basket {
   width: 100%;
-  min-height: 520px;
-  padding: 36px 26px;
+  min-height: 0;
+  padding: 34px 47px 57px 48px;
   border-radius: 8px;
   color: #ffecdf;
   background: #302f2d;
 }
 
 .desktop-basket {
-  position: sticky;
-  top: 96px;
+  position: fixed;
+  top: 12px;
+  right: max(44px, calc((100vw - 1440px) / 2));
+  z-index: 25;
+  width: 435px;
+  height: 794px;
+  max-height: calc(100vh - 24px);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.desktop-basket:not(.hidden) {
+  display: block;
 }
 .basket h2 {
-  margin: 0 0 28px;
+  margin: 0 0 26px;
   text-align: center;
+  font-size: 24px;
 }
 
 .basket-empty {
@@ -243,14 +294,16 @@ h1 {
 
 .basket-items {
   display: grid;
-  gap: 12px;
-  max-height: 292px;
+  gap: 8px;
+  width: 340px;
+  max-height: 281px;
   overflow-y: auto;
-  padding-right: 6px;
+  padding-right: 7px;
 }
 
 .basket-card {
-  padding: 14px;
+  min-height: 90px;
+  padding: 16px 14px 12px;
   border-radius: 8px;
   color: #2f2925;
   background: #fff0e5;
@@ -265,17 +318,19 @@ h1 {
 }
 
 .basket-card h3 {
-  margin: 0 0 8px;
-  font-size: 15px;
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.18;
 }
 
 .delete-button,
 .quantity-button {
-  width: 28px;
-  height: 28px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   color: #2f2925;
   background: #fff;
+  font-size: 10px;
   font-weight: 800;
 }
 
@@ -283,35 +338,50 @@ h1 {
   display: flex;
   align-items: center;
   gap: 6px;
+  font-size: 13px;
 }
 
 .basket-sums {
   display: grid;
-  gap: 8px;
+  gap: 9px;
+  width: 340px;
+  height: 208px;
   margin-top: 22px;
-  padding-top: 14px;
+  padding-top: 0;
   border-top: 2px solid #ffecdf;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .sum-row.total {
-  margin-top: 4px;
-  font-size: 17px;
+  margin-top: 5px;
+  padding-top: 11px;
+  border-top: 2px solid #ffecdf;
+  font-size: 14px;
   font-weight: 800;
 }
 
 .buy-button {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 18px;
+  min-height: 63px;
   padding: 14px;
   color: #fff;
   background: #f36a12;
-  font-size: 18px;
+  font-size: 20px;
 }
 
-.mobile-basket-button,
-.dialog-backdrop {
+.mobile-basket-button {
   display: none;
+}
+
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.32);
 }
 
 .footer {
@@ -319,7 +389,7 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 32px;
-  min-height: 64px;
+  min-height: 128px;
   color: #fff;
   font-size: 8px;
 }
@@ -335,36 +405,70 @@ h1 {
 
 .confirmation {
   position: relative;
-  width: min(280px, calc(100vw - 32px));
-  padding: 28px 22px;
-  border-radius: 8px;
+  width: 184px;
+  min-height: 124px;
+  padding: 33px 15px 18px;
+  border-radius: 10px;
   color: #fff;
   background: #302f2d;
   text-align: center;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
 }
 
 .confirmation h2 {
-  margin: 10px 0 6px;
+  margin: 8px 0 3px;
+  font-size: 18px;
+  line-height: 1.05;
+  letter-spacing: 0;
 }
 
 .confirmation p {
   margin: 0;
+  font-size: 11px;
+  line-height: 1.2;
   font-weight: 700;
+}
+
+.confirmation-truck-track {
+  width: 54px;
+  height: 22px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.confirmation-truck {
+  display: block;
+  width: 30px;
+  height: 22px;
+  object-fit: cover;
+  object-position: center;
+  animation: driveRight 1150ms linear infinite;
 }
 
 .close-button {
   position: absolute;
-  top: 10px;
-  right: 12px;
+  top: 8px;
+  right: 10px;
   color: #fff;
   background: transparent;
-  font-size: 22px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+@keyframes driveRight {
+  from {
+    transform: translateX(-34px) scaleX(-1);
+  }
+
+  to {
+    transform: translateX(58px) scaleX(-1);
+  }
 }
 
 @media (max-width: 900px) {
   .topbar__inner {
-    height: 64px;
-    padding: 0 14px;
+    height: 96px;
+    padding: 0 48px;
   }
 
   .page-layout {
@@ -373,31 +477,41 @@ h1 {
   }
 
   .desktop-basket {
-    display: none;
+    position: fixed;
+    inset: auto 14px 78px;
+    width: auto;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
   }
 
   .hero-image {
-    height: 190px;
+    height: 320px;
   }
 
   .restaurant-logo {
-    width: 104px;
-    height: 104px;
-    margin-top: -52px;
+    width: 150px;
+    height: 150px;
+    margin-top: -75px;
   }
 
   .category-header {
+    min-height: 74px;
     margin: 0 0 14px;
+    padding-left: 24px;
   }
 
   .meal-list {
     padding: 0 12px;
+    width: 100%;
   }
 
   .meal-card {
     grid-template-columns: 118px minmax(0, 1fr);
     gap: 10px;
     align-items: start;
+    width: 100%;
+    height: auto;
+    min-height: 141px;
   }
 
   .meal-card img {
@@ -410,6 +524,8 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    min-height: 30px;
   }
 
   .mobile-basket-button {
@@ -418,7 +534,7 @@ h1 {
     bottom: 12px;
     left: 12px;
     z-index: 20;
-    display: flex;
+    display: none;
     justify-content: center;
     gap: 10px;
     padding: 14px;
@@ -426,16 +542,6 @@ h1 {
     color: #fff;
     background: #f36a12;
     font-weight: 800;
-  }
-
-  .dialog-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 30;
-    display: grid;
-    place-items: center;
-    padding: 16px;
-    background: rgba(0, 0, 0, 0.55);
   }
 
   .mobile-basket {
@@ -455,7 +561,8 @@ h1 {
 
 @media (max-width: 360px) {
   .brand-logo {
-    width: 78px;
+    width: 82px;
+    height: 34px;
   }
 
   .meal-card {

@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bestell App | BurgerHouse</title>
     <link rel="icon" href="./assets/logo/Logo 02.png">
-    <link rel="stylesheet" href="./style.css" />
-    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./style.css?v=24" />
+    <script src="./script.js?v=24" defer></script>
 
 </head>
 <body>
@@ -14,7 +14,7 @@
         <div class="topbar__inner">
          <img class="brand-logo" src="./assets/logo/Logo 02.png" alt="Bestell-App Logo" />
          <button class="icon-button" aria-label="Menü öffnen">
-           <img src="./logo/menu.png" alt="" /> 
+           <img src="./assets/logo/menu.png" alt="" />
          </button>
         </div>
     </header>
@@ -32,12 +32,13 @@
       </section>
       <div class="page-layout">
         <section class="menu-content" id="menuContent"></section>
-        <aside class="basket desktop-basket" aria-label="Warenkorb">
+        <aside class="basket desktop-basket hidden" id="basketPanel" aria-label="Warenkorb">
+          <button class="close-button" type="button" onclick="closeBasketDialog()" aria-label="Warenkorb schließen">×</button>
           <div id="desktopBasket"></div>
         </aside>
       </div>
     </main>
-    <button class="mobile-basket-button" id="openBasketButton" type="button">
+    <button class="mobile-basket-button hidden" id="openBasketButton" type="button">
       Warenkorb ansehen <span id="mobileBasketTotal">0,00€</span>
     </button>
 
@@ -51,8 +52,14 @@
     <div class="dialog-backdrop hidden" id="confirmationDialog">
       <div class="confirmation">
         <button class="close-button" id="closeConfirmationButton" type="button" aria-label="Meldung schließen">×</button>
-        <strong>🚚</strong>
-        <h2>Bestellung bestätigt!</h2>
+        <div class="confirmation-truck-track" aria-hidden="true">
+          <img
+            class="confirmation-truck"
+            src="./assets/logo/390482e1a64bffed0bc1416df77319027c50bba3.png"
+            alt=""
+          />
+        </div>
+        <h2>Bestellung abgeschickt!</h2>
         <p>Dein Essen ist unterwegs!</p>
       </div>
     </div>
