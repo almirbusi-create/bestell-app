@@ -4,24 +4,24 @@ const basket = [];
 const categories = [
   {
     id: "burger",
-    name: "Burger & Sandwiches",
+    name: "Burger und Sandwiches",
     icon: "./assets/logo/category-burger.png",
     meals: [
-      createMeal("veggieBurger", "Veggie mushroom black burger", "Mushrooms, Edamame, Tomatoes, vegan sauce", 16.9, "./assets/img/veggie-mushroom black burger.jpg"),
-      createMeal("meatBurger", "All meat burger", "Beef, Bacon, Dill pickles, smoked cheese", 15.9, "./assets/img/ali meat burger.jpg"),
-      createMeal("redBurger", "Beef red burger", "Beef, cheese, tomatoes, lettuce, onion", 14.9, "./assets/img/beef red burger.jpg"),
-      createMeal("chickenBurger", "Big chicken burger", "Chicken, cheese, tomatoes, lettuce, onion", 15.9, "./assets/img/tripel sendwich.jpg")
+      createMeal("veggieBurger", "Vegetarischer Pilz-Burger", "Pilze, Edamame, Tomaten, vegane Sauce", 16.9, "./assets/img/veggie-mushroom black burger.jpg"),
+      createMeal("meatBurger", "Fleisch-Burger", "Rindfleisch, Bacon, Gewürzgurken, geräucherter Käse", 15.9, "./assets/img/ali meat burger.jpg"),
+      createMeal("redBurger", "Roter Rindfleisch-Burger", "Rindfleisch, Käse, Tomaten, Salat, Zwiebeln", 14.9, "./assets/img/beef red burger.jpg"),
+      createMeal("chickenBurger", "Großer Hähnchen-Burger", "Hähnchen, Käse, Tomaten, Salat, Zwiebeln", 15.9, "./assets/img/tripel sendwich.jpg")
     ]
   },
 {
     id: "pizza",
-    name: "Pizza (30 cm)",
+    name: "Pizza (30cm)",
     icon: "./assets/logo/category-pizza.png",
     meals: [
-      createMeal("margherita", "Pizza Margherita", "Tomato sauce, mozzarella", 11.9, "./assets/img/pizza margarita.jpg"),
-      createMeal("chorizo", "Pizza Chorizo", "Tomatoes, mozzarella, chorizo", 13.9, "./assets/img/pizza choriza.jpg"),
-      createMeal("funghi", "Funghi", "Red onion, olives, button mushrooms", 12.9, "./assets/img/funghi.jpg"),
-      createMeal("quattro", "Quattro Formaggi with Chicken", "Chicken, mozzarella, gorgonzola, fontina", 15.9, "./assets/img/quattro formaggi with chicken.jpg")
+      createMeal("margherita", "Pizza Margherita", "Tomatensauce, Mozzarella", 11.9, "./assets/img/pizza margarita.jpg"),
+      createMeal("chorizo", "Pizza Chorizo", "Tomaten, Mozzarella, Chorizo", 13.9, "./assets/img/pizza choriza.jpg"),
+      createMeal("funghi", "Pizza Funghi", "Rote Zwiebeln, Oliven, Champignons", 12.9, "./assets/img/funghi.jpg"),
+      createMeal("quattro", "Vier-Käse-Pizza mit Hähnchen", "Hähnchen, Mozzarella, Gorgonzola, Fontina", 15.9, "./assets/img/quattro formaggi with chicken.jpg")
     ]
   },
   {
@@ -29,10 +29,10 @@ const categories = [
     name: "Salate",
     icon: "./assets/logo/category-salad.png",
     meals: [
-      createMeal("arugula", "Warm beef arugula salad", "Beef, arugula, field salad, cherry tomatoes", 16.9, "./assets/img/wamm beef angula salad.jpg"),
-      createMeal("greenSalad", "Mini green Salad", "Green salad, cucumber, carrots, radishes", 7.9, "./assets/img/salat mini.jpg"),
-      createMeal("saladFood", "Green Salad with sea food", "Mixed greens, cherry tomatoes, seafood", 16.9, "./assets/img/nudel salat.jpg"),
-      createMeal("tofuSalad", "Vegan green salad with tofu", "Green salad, cherry tomatoes, tofu, peppers", 14.9, "./assets/img/vegan green salad with.jpg")
+      createMeal("arugula", "Warmer Rindfleisch-Rucola-Salat", "Rindfleisch, Rucola, Feldsalat, Kirschtomaten", 16.9, "./assets/img/wamm beef angula salad.jpg"),
+      createMeal("greenSalad", "Kleiner grüner Salat", "Grüner Salat, Gurken, Karotten, Radieschen", 7.9, "./assets/img/salat mini.jpg"),
+      createMeal("saladFood", "Grüner Salat mit Meeresfrüchten", "Gemischter Salat, Kirschtomaten, Meeresfrüchte", 16.9, "./assets/img/nudel salat.jpg"),
+      createMeal("tofuSalad", "Veganer grüner Salat mit Tofu", "Grüner Salat, Kirschtomaten, Tofu, Paprika", 14.9, "./assets/img/vegan green salad with.jpg")
     ]
   }
 ];
