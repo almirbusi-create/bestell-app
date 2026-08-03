@@ -126,12 +126,37 @@ h1 span {
 }
 
 .rating {
-  padding: 2px 6px;
-  border-radius: 999px;
-  color: #7b5a00;
-  background: #fff4d6;
-  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 42px;
+  padding: 0 12px;
+  border-radius: 8px;
+  color: #2f3437;
+  background: #f8c7ad;
+  font-family: "Palanquin", Arial, Helvetica, sans-serif;
+  line-height: 1;
   font-weight: 700;
+}
+
+.rating-star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 23px;
+  font-size: 24px;
+  line-height: 23px;
+}
+
+.rating-score {
+  font-size: 30px;
+}
+
+.rating-count {
+  color: #6f7478;
+  font-size: 26px;
+  font-weight: 500;
 }
 
 .restaurant-info p {
@@ -147,6 +172,12 @@ h1 span {
   grid-template-columns: minmax(0, 1fr) 435px;
   align-items: start;
   padding: 0 0 128px;
+}
+
+.menu-content {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  min-width: 0;
 }
 
 .category-header {
@@ -295,7 +326,7 @@ h1 span {
 }
 
 .desktop-basket:not(.hidden) {
-  display: block;
+  display: flex;
 }
 .basket h2 {
   margin: 0 0 26px;

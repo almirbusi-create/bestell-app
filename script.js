@@ -70,7 +70,7 @@ function createCategoryTemplate(category) {
 
 function createMealTemplate(meal) {
   const item = getBasketItem(meal.id);
-  const label = item ? "Hinzugefügt" : "Hinzufügen";
+  const label = item ? `Hinzugefügt ${item.quantity}` : "Hinzufügen";
   return `<article class="meal-card">
     <img src="${meal.image}" alt="${meal.name}">
     <div class="meal-info">
