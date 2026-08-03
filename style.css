@@ -31,10 +31,6 @@ p {
   background: #f36a12;
 }
 
-.topbar {
-  border: 3px solid #0aa8f0;
-}
-
 main {
   width: min(100%, 1440px);
   margin: 0 auto;
@@ -77,6 +73,7 @@ main {
   position: relative;
   text-align: center;
   background: #fff;
+  padding-bottom: 30px;
 }
 .hero-image {
   display: block;
@@ -189,13 +186,25 @@ h1 span {
   margin: 0 0 22px;
   padding: 0 0 0 160px;
   color: #fff;
-  background: #f36a12;
+  background: linear-gradient(
+    to bottom,
+    transparent 0 15.5px,
+    #f36a12 15.5px 75.5px,
+    transparent 75.5px 100%
+  );
+  overflow: visible;
 }
 
 .category-header img {
+  position: relative;
+  top: 0;
   width: 88px;
   height: 91px;
   object-fit: contain;
+}
+
+.category-header--burger img {
+  top: -10px;
 }
 
 .category-header h2 {
@@ -204,7 +213,7 @@ h1 span {
 }
 
 .category-header--pizza {
-  min-height: 92px;
+  min-height: 91px;
 }
 
 .category {
@@ -297,6 +306,13 @@ h1 span {
   font-weight: 700;
 }
 
+.add-button {
+  min-width: 115px;
+  padding: 6px 8px;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
 .add-button.is-added {
   color: #f36a12;
 }
@@ -329,9 +345,15 @@ h1 span {
   display: flex;
 }
 .basket h2 {
-  margin: 0 0 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 178px;
+  height: 41px;
+  margin: 0 auto 20px;
   text-align: center;
-  font-size: 24px;
+  font-size: 32px;
+  line-height: 1;
 }
 
 .basket-empty {
@@ -346,13 +368,45 @@ h1 span {
   width: 100px;
 }
 
+.basket-scroll {
+  position: relative;
+  width: 340px;
+}
+
 .basket-items {
   display: grid;
   gap: 8px;
-  width: 340px;
+  width: 100%;
   max-height: 281px;
   overflow-y: auto;
-  padding-right: 7px;
+  padding-right: 13px;
+  scrollbar-width: none;
+}
+
+.basket-items::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.basket-scrollbar {
+  position: absolute;
+  top: 0;
+  right: 2px;
+  width: 6px;
+  height: 100%;
+}
+
+.basket-scrollbar__thumb {
+  width: 6px;
+  height: 60px;
+  border-radius: 999px;
+  background: #ffecdf;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.basket-scrollbar.hidden {
+  display: none;
 }
 
 .basket-card {
@@ -373,8 +427,8 @@ h1 span {
 
 .basket-card h3 {
   margin: 0 0 10px;
-  font-size: 14px;
-  line-height: 1.18;
+  font-size: 22px;
+  line-height: 1.05;
 }
 
 .delete-button,
@@ -395,6 +449,11 @@ h1 span {
   font-size: 13px;
 }
 
+.quantity-controls span {
+  font-size: 18px;
+  font-weight: 700;
+}
+
 .basket-sums {
   display: grid;
   gap: 9px;
@@ -402,26 +461,43 @@ h1 span {
   height: 208px;
   margin-top: 22px;
   padding-top: 0;
-  border-top: 2px solid #ffecdf;
-  font-size: 13px;
+  font-size: 20px;
 }
 
 .sum-row.total {
   margin-top: 5px;
   padding-top: 11px;
   border-top: 2px solid #ffecdf;
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 800;
 }
 
 .buy-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   width: 100%;
   margin-top: 18px;
-  min-height: 63px;
-  padding: 14px;
+  min-height: 70px;
+  padding: 14px 18px;
   color: #fff;
   background: #f36a12;
-  font-size: 20px;
+  font-size: 32px;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.buy-button span {
+  min-width: 0;
+}
+
+.buy-button--compact {
+  gap: 6px;
+  padding-inline: 10px;
+  font-size: 28px;
 }
 
 .mobile-basket-button {
@@ -465,7 +541,7 @@ h1 span {
   width: 335px;
   max-width: calc(100vw - 32px);
   min-height: 163px;
-  padding: 22px 20px 18px;
+  padding: 20px 16px 16px;
   border-radius: 10px;
   color: #fff;
   background: #302f2d;
@@ -475,8 +551,8 @@ h1 span {
 
 .confirmation h2 {
   width: 100%;
-  margin: 4px 0 1px;
-  font-size: 31px;
+  margin: 5px 0 3px;
+  font-size: 27px;
   line-height: 1;
   letter-spacing: 0;
   white-space: nowrap;
@@ -485,7 +561,7 @@ h1 span {
 .confirmation p {
   width: 100%;
   margin: 0;
-  font-size: 22px;
+  font-size: 19px;
   line-height: 1;
   font-weight: 700;
   white-space: nowrap;
@@ -493,15 +569,15 @@ h1 span {
 
 .confirmation-truck-track {
   width: 80px;
-  height: 38px;
-  margin: 0 auto 2px;
+  height: 34px;
+  margin: 0 auto 4px;
   overflow: hidden;
 }
 
 .confirmation-truck {
   display: block;
-  width: 48px;
-  height: 35px;
+  width: 42px;
+  height: 31px;
   object-fit: cover;
   object-position: center;
   animation: driveRight 1150ms linear infinite;
@@ -509,8 +585,8 @@ h1 span {
 
 .close-button {
   position: absolute;
-  top: 22px;
-  right: 24px;
+  top: 25px;
+  right: 28px;
   width: 16px;
   height: 16px;
   color: #fff;
@@ -526,7 +602,7 @@ h1 span {
   }
 
   to {
-    transform: translateX(84px) scaleX(-1);
+    transform: translateX(86px) scaleX(-1);
   }
 }
 
@@ -559,10 +635,22 @@ h1 span {
     margin-top: -75px;
   }
 
+  .restaurant-hero {
+    padding-bottom: 20px;
+  }
+
   .category-header {
-    min-height: 74px;
+    min-height: 91px;
     margin: 0 0 14px;
     padding-left: 24px;
+  }
+
+  .category-header img {
+    top: 0;
+  }
+
+  .category-header--burger img {
+    top: -10px;
   }
 
   .meal-list {
@@ -644,8 +732,7 @@ h1 span {
     font-size: 14px;
   }
 
-  .meal-card p,
-  .add-button {
+  .meal-card p {
     font-size: 11px;
   }
 }

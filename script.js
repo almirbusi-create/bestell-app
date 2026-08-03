@@ -118,12 +118,56 @@ function renderBaskets() {
   const template = createBasketTemplate();
   document.getElementById("desktopBasket").innerHTML = template;
   document.getElementById("mobileBasket").innerHTML = template;
+  setupBasketScrollbars();
+}
+
+function setupBasketScrollbars() {
+  document.querySelectorAll(".basket-scroll").forEach(setupBasketScrollbar);
+}
+
+function setupBasketScrollbar(scrollArea) {
+  const list = scrollArea.querySelector(".basket-items");
+  const thumb = scrollArea.querySelector(".basket-scrollbar__thumb");
+  if (!list || !thumb) return;
+  updateScrollbarThumb(list, thumb);
+  list.onscroll = () => updateScrollbarThumb(list, thumb);
+  thumb.onpointerdown = (event) => startScrollbarDrag(event, list, thumb);
+}
+
+function updateScrollbarThumb(list, thumb) {
+  const maxScroll = list.scrollHeight - list.clientHeight;
+  const track = thumb.parentElement.clientHeight - thumb.offsetHeight;
+  const top = maxScroll ? (list.scrollTop / maxScroll) * track : 0;
+  thumb.style.transform = `translateY(${top}px)`;
+  thumb.parentElement.classList.toggle("hidden", maxScroll <= 0);
+}
+
+function startScrollbarDrag(event, list, thumb) {
+  event.preventDefault();
+  const startY = event.clientY;
+  const startTop = list.scrollTop;
+  thumb.setPointerCapture(event.pointerId);
+  thumb.onpointermove = (move) => dragScrollbar(move, list, thumb, startY, startTop);
+  thumb.onpointerup = () => stopScrollbarDrag(thumb);
+}
+
+function dragScrollbar(event, list, thumb, startY, startTop) {
+  const maxScroll = list.scrollHeight - list.clientHeight;
+  const track = thumb.parentElement.clientHeight - thumb.offsetHeight;
+  list.scrollTop = startTop + (event.clientY - startY) * (maxScroll / track);
+}
+
+function stopScrollbarDrag(thumb) {
+  thumb.onpointermove = null;
+  thumb.onpointerup = null;
 }
 
 function createBasketTemplate() {
   if (!basket.length) return createEmptyBasketTemplate();
-  return `<h2>Dein Warenkorb</h2><div class="basket-items">
-    ${basket.map(createBasketItemTemplate).join("")}</div>${createBasketSumTemplate()}`;
+  return `<h2>Dein Warenkorb</h2><div class="basket-scroll">
+    <div class="basket-items">${basket.map(createBasketItemTemplate).join("")}</div>
+    <div class="basket-scrollbar"><div class="basket-scrollbar__thumb"></div></div>
+    </div>${createBasketSumTemplate()}`;
 }
 
 function createEmptyBasketTemplate() {
@@ -135,17 +179,19 @@ function createEmptyBasketTemplate() {
 function createBasketItemTemplate(item) {
   const meal = getMeal(item.id);
   return `<article class="basket-card"><div class="basket-card__top">
-    <h3>${item.quantity} x ${meal.name}</h3>
-    <button class="delete-button" onclick="removeFromBasket('${item.id}')">×</button></div>
+    <h3>${item.quantity} x ${meal.name}</h3></div>
     <div class="basket-card__bottom">${createQuantityTemplate(item)}
     <strong>${formatPrice(meal.price * item.quantity)}</strong></div></article>`;
 }
 
 function createQuantityTemplate(item) {
+  const decreaseButton = item.quantity === 1
+    ? `<button class="quantity-button quantity-button--delete" aria-label="Gericht entfernen" onclick="removeFromBasket('${item.id}')">🗑</button>`
+    : `<button class="quantity-button" aria-label="Menge verringern" onclick="decreaseQuantity('${item.id}')">−</button>`;
   return `<div class="quantity-controls">
-    <button class="quantity-button" onclick="decreaseQuantity('${item.id}')">−</button>
+    ${decreaseButton}
     <span>${item.quantity}</span>
-    <button class="quantity-button" onclick="increaseQuantity('${item.id}')">+</button>
+    <button class="quantity-button" aria-label="Menge erhöhen" onclick="increaseQuantity('${item.id}')">+</button>
   </div>`;
 }
 
@@ -154,7 +200,10 @@ function createBasketSumTemplate() {
     <div class="sum-row"><span>Zwischensumme</span><span>${formatPrice(getSubtotal())}</span></div>
     <div class="sum-row"><span>Lieferkosten</span><span>${formatPrice(deliveryFee)}</span></div>
     <div class="sum-row total"><span>Gesamt</span><span>${formatPrice(getTotal())}</span></div>
-    <button class="buy-button" onclick="buyNow()">Jetzt bestellen (${formatPrice(getTotal())})</button></div>`;
+    <button class="buy-button ${getTotal() >= 100 ? "buy-button--compact" : ""}" onclick="buyNow()">
+      <span>Jetzt bestellen</span>
+      <span>(${formatPrice(getTotal())})</span>
+    </button></div>`;
 }
 
 function buyNow() {
