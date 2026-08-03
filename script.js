@@ -73,9 +73,11 @@ function createMealTemplate(meal) {
   const label = item ? "Hinzugefügt" : "Hinzufügen";
   return `<article class="meal-card">
     <img src="${meal.image}" alt="${meal.name}">
-    <div class="meal-info"><h3>${meal.name}</h3><p>${meal.description}</p></div>
-    <div class="meal-actions"><span class="price">${formatPrice(meal.price)}</span>
-    <button class="add-button ${item ? "is-added" : ""}" onclick="addToBasket('${meal.id}')">${label}</button></div>
+    <div class="meal-info">
+      <div class="meal-text"><h3>${meal.name}</h3><p>${meal.description}</p></div>
+      <div class="meal-actions"><span class="price">${formatPrice(meal.price)}</span>
+      <button class="add-button ${item ? "is-added" : ""}" onclick="addToBasket('${meal.id}')">${label}</button></div>
+    </div>
   </article>`;
 }
 
