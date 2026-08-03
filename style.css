@@ -11,7 +11,7 @@ body {
   margin: 0;
   color: #2f2925;
   background: #bfbfbf;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Palanquin", Arial, Helvetica, sans-serif;
 }
 
 button {
@@ -224,13 +224,13 @@ h1 span {
 
 .meal-card h3 {
   margin: 0 0 6px;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 1.15;
 }
 
 .meal-card p {
   margin: 0;
-  font-size: 12px;
+  font-size: 18px;
   line-height: 1.28;
 }
 
@@ -247,7 +247,7 @@ h1 span {
 
 .price {
   min-width: 74px;
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 800;
   text-align: right;
 }
@@ -410,7 +410,7 @@ h1 span {
   gap: 32px;
   min-height: 128px;
   color: #fff;
-  font-size: 8px;
+  font-size: 18px;
 }
 
 .footer a {
