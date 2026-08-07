@@ -239,7 +239,12 @@ function updateView() {
 function bindDialogs() {
   document.getElementById("openBasketButton").onclick = openBasketDialog;
   document.getElementById("closeBasketButton").onclick = closeBasketDialog;
+  document.getElementById("basketDialog").onclick = closeBasketFromBackdrop;
   document.getElementById("closeConfirmationButton").onclick = closeConfirmation;
+}
+
+function closeBasketFromBackdrop(event) {
+  if (event.target.id === "basketDialog") closeBasketDialog();
 }
 
 function openBasketDialog() {
