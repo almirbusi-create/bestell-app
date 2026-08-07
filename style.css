@@ -1007,6 +1007,8 @@ h1 span {
   .restaurant-title {
     flex-direction: column;
     gap: 24px;
+    width: min(353px, calc(100vw - 32px));
+    margin-inline: auto;
   }
 
   .rating {
@@ -1038,7 +1040,7 @@ h1 span {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 353px;
+    width: min(353px, calc(100vw - 32px));
     max-width: 100%;
     height: 54px;
     margin: 6px auto 0;
@@ -1388,13 +1390,29 @@ h1 span {
   }
 
   .meal-card {
+    width: 100%;
+    max-width: 100%;
     padding: 8px;
   }
 
+  .category,
+  .category-header,
+  .meal-list {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .meal-card img {
-    width: 315px;
+    width: 100%;
     max-width: 100%;
     height: 86px;
+  }
+
+  .meal-info,
+  .meal-text,
+  .meal-actions {
+    width: 100%;
+    max-width: 100%;
   }
 
   .mobile-basket-button {
