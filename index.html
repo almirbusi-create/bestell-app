@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bestell App | BurgerHouse</title>
     <link rel="icon" href="./assets/logo/Logo 02.png">
-    <link rel="stylesheet" href="./style.css?v=71" />
-    <script src="./script.js?v=71" defer></script>
+    <link rel="stylesheet" href="./style.css?v=101" />
+    <script src="./script.js?v=101" defer></script>
 
 </head>
 <body>
@@ -42,9 +42,21 @@
         </aside>
       </div>
     </main>
-    <button class="mobile-basket-button hidden" id="openBasketButton" type="button">
-      Warenkorb ansehen <span id="mobileBasketTotal">0,00€</span>
-    </button>
+    <nav class="mobile-basket-button" aria-label="Mobile Navigation">
+      <button class="mobile-nav-item" type="button" aria-label="Startseite">
+        <img src="./assets/logo/Property 1=default (2).png" alt="" />
+      </button>
+      <button class="mobile-nav-item" type="button" aria-label="Profil">
+        <img src="./assets/logo/Property 1=default (5).png" alt="" />
+      </button>
+      <button class="mobile-nav-item" type="button" aria-label="Bestellungen">
+        <img src="./assets/logo/Property 1=default (4).png" alt="" />
+      </button>
+      <button class="mobile-nav-item mobile-nav-item--basket" id="openBasketButton" type="button" aria-label="Warenkorb öffnen">
+        <img src="./assets/logo/Property 1=default (3).png" alt="" />
+        <strong id="mobileBasketTotal">0,00€</strong>
+      </button>
+    </nav>
 
     <div class="dialog-backdrop hidden" id="basketDialog">
       <aside class="basket mobile-basket" aria-label="Mobiler Warenkorb">

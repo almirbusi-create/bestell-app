@@ -4,7 +4,7 @@ const basket = [];
 const categories = [
   {
     id: "burger",
-    name: "Burger und Sandwiches",
+    name: "Burger",
     icon: "./assets/logo/category-burger.png",
     meals: [
       createMeal("veggieBurger", "Vegetarischer Pilz-Burger", "Pilze, Edamame, Tomaten, vegane Sauce", 16.9, "./assets/img/veggie-mushroom black burger.jpg"),
@@ -220,7 +220,8 @@ function showConfirmation() {
 }
 
 function updateMobileTotal() {
-  document.getElementById("mobileBasketTotal").textContent = formatPrice(getTotal());
+  const amount = basket.reduce((sum, item) => sum + item.quantity, 0);
+  document.getElementById("mobileBasketTotal").textContent = amount ? amount : "";
 }
 
 function updateView() {
@@ -236,9 +237,12 @@ function bindDialogs() {
 }
 
 function openBasketDialog() {
-  if (!basket.length) return;
+  if (window.matchMedia("(max-width: 900px)").matches) {
+    document.getElementById("basketDialog").classList.remove("hidden");
+    document.getElementById("basketPanel").classList.add("hidden");
+    return;
+  }
   document.getElementById("basketPanel").classList.remove("hidden");
-  document.getElementById("basketDialog").classList.add("hidden");
 }
 
 function closeBasketDialog() {
