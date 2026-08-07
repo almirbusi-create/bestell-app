@@ -208,8 +208,17 @@ h1 span {
 }
 
 .category-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin: 0;
   font-size: 34px;
+  white-space: nowrap;
+}
+
+.category-header__extra {
+  font-size: 0.85em;
+  font-weight: 400;
 }
 
 .category-header--pizza {
@@ -924,6 +933,39 @@ h1 span {
     margin-top: 38px;
   }
 
+  .category-header--pizza img {
+    top: -3px;
+    width: 53px;
+    height: 60px;
+  }
+
+  .category-header--pizza h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 152px;
+    height: 38px;
+    margin-top: 38px;
+    text-align: center;
+  }
+
+  .category-header--salad img {
+    top: -3px;
+    width: 59px;
+    height: 60px;
+  }
+
+  .category-header--salad h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 79px;
+    height: 38px;
+    margin-top: 38px;
+    text-align: center;
+  }
+
   .page-layout {
     padding-bottom: 0;
   }
@@ -1124,8 +1166,10 @@ h1 span {
   }
 
   .category-header {
-    min-height: 66px;
-    background: linear-gradient(to bottom, transparent 0 25px, #f36a12 25px 66px);
+    width: 375px;
+    max-width: 100%;
+    min-height: 92px;
+    background: linear-gradient(to bottom, transparent 0 32px, #f36a12 32px 92px);
   }
 
   .category-header img {
@@ -1142,6 +1186,39 @@ h1 span {
 
   .category-header--burger h2 {
     margin-top: 28px;
+  }
+
+  .category-header--pizza img {
+    top: -3px;
+    width: 53px;
+    height: 60px;
+  }
+
+  .category-header--pizza h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 152px;
+    height: 38px;
+    margin-top: 31px;
+    text-align: center;
+  }
+
+  .category-header--salad img {
+    top: -3px;
+    width: 59px;
+    height: 60px;
+  }
+
+  .category-header--salad h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 79px;
+    height: 38px;
+    margin-top: 31px;
+    text-align: center;
   }
 
   .category-header h2 {

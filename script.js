@@ -26,7 +26,7 @@ const categories = [
   },
   {
     id: "salad",
-    name: "Salate",
+    name: "Salat",
     icon: "./assets/logo/category-salad.png",
     meals: [
       createMeal("arugula", "Warmer Rindfleisch-Rucola-Salat", "Rindfleisch, Rucola, Feldsalat, Kirschtomaten", 16.9, "./assets/img/wamm beef angula salad.jpg"),
@@ -63,9 +63,14 @@ function renderMenu() {
 
 function createCategoryTemplate(category) {
   return `<article class="category" id="${category.id}">
-    <div class="category-header category-header--${category.id}"><img src="${category.icon}" alt=""><h2>${category.name}</h2></div>
+    <div class="category-header category-header--${category.id}"><img src="${category.icon}" alt=""><h2>${createCategoryTitleTemplate(category)}</h2></div>
     <div class="meal-list">${category.meals.map(createMealTemplate).join("")}</div>
   </article>`;
+}
+
+function createCategoryTitleTemplate(category) {
+  if (category.id !== "pizza") return category.name;
+  return `Pizza <span class="category-header__extra">(30cm)</span>`;
 }
 
 function createMealTemplate(meal) {
