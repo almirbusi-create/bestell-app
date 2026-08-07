@@ -26,13 +26,13 @@ p {
 
 .topbar,
 .footer {
-  width: min(100%, 1440px);
+  width: 100%;
   margin: 0 auto;
   background: #f36a12;
 }
 
 main {
-  width: min(100%, 1440px);
+  width: 100%;
   margin: 0 auto;
   background: #ffffff;
 }
@@ -47,6 +47,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1440px;
   height: 128px;
   padding: 0 120px;
 }
@@ -71,6 +72,7 @@ main {
 
 .restaurant-hero {
   position: relative;
+  max-width: 1440px;
   text-align: center;
   background: #fff;
   padding-bottom: 30px;
@@ -168,6 +170,7 @@ h1 span {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 435px;
   align-items: start;
+  max-width: 1440px;
   padding: 0 0 128px;
 }
 
@@ -193,6 +196,14 @@ h1 span {
     transparent 75.5px 100%
   );
   overflow: visible;
+}
+
+@media (min-width: 901px) {
+  .category-header {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding-left: max(160px, calc((100vw - 1440px) / 2 + 160px));
+  }
 }
 
 .category-header img {
@@ -485,28 +496,30 @@ h1 span {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  width: 100%;
+  gap: 14px;
+  width: max-content;
   margin-top: 18px;
   min-height: 70px;
-  padding: 14px 18px;
+  padding: 14px 20px;
   color: #fff;
   background: #f36a12;
   font-size: 32px;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .buy-button span {
   min-width: 0;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .buy-button--compact {
-  gap: 6px;
-  padding-inline: 10px;
-  font-size: 28px;
+  gap: 14px;
+  padding-inline: 18px;
+  font-size: 32px;
 }
 
 .mobile-basket-button {
