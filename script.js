@@ -206,8 +206,8 @@ function createBasketSumTemplate() {
     <div class="sum-row"><span>Lieferkosten</span><span>${formatPrice(deliveryFee)}</span></div>
     <div class="sum-row total"><span>Gesamt</span><span>${formatPrice(getTotal())}</span></div>
     <button class="buy-button ${getTotal() >= 100 ? "buy-button--compact" : ""}" onclick="buyNow()">
-      <span>Jetzt bestellen</span>
-      <span>(${formatPrice(getTotal())})</span>
+      <span class="buy-button__label">Jetzt bestellen</span>
+      <span class="buy-button__price">(${formatPrice(getTotal())})</span>
     </button></div>`;
 }
 
@@ -227,6 +227,7 @@ function showConfirmation() {
 function updateMobileTotal() {
   const amount = basket.reduce((sum, item) => sum + item.quantity, 0);
   document.getElementById("mobileBasketTotal").textContent = amount ? amount : "";
+  document.getElementById("openBasketButton").classList.toggle("is-filled", amount > 0);
 }
 
 function updateView() {

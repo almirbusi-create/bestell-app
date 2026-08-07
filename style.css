@@ -755,12 +755,148 @@ h1 span {
     display: flex;
   }
 
+  .mobile-nav-item--basket.is-filled img {
+    filter: brightness(0) saturate(100%) invert(50%) sepia(93%) saturate(1850%) hue-rotate(358deg) brightness(100%) contrast(94%);
+  }
+
   .mobile-basket {
     position: relative;
-    max-width: 340px;
-    min-height: 0;
+    width: 343px;
+    max-width: calc(100vw - 32px);
+    height: 662px;
+    min-height: 662px;
     max-height: calc(100vh - 32px);
+    padding: 43px 21px 41px 22px;
     overflow-y: auto;
+  }
+
+  .mobile-basket .close-button {
+    top: 29px;
+    right: 31px;
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .mobile-basket h2 {
+    width: 300px;
+    max-width: 100%;
+    height: 32px;
+    margin-bottom: 16px;
+    font-size: 32px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .mobile-basket .basket-scroll,
+  .mobile-basket .basket-items,
+  .mobile-basket .basket-sums {
+    width: 300px;
+    max-width: 100%;
+  }
+
+  .mobile-basket .basket-items {
+    gap: 10px;
+    max-height: 359px;
+    padding-right: 0;
+  }
+
+  .mobile-basket .basket-scrollbar {
+    right: -12px;
+  }
+
+  .mobile-basket .basket-card {
+    width: 300px;
+    max-width: 100%;
+    min-height: 123px;
+    height: 123px;
+    padding: 18px 17px 14px;
+  }
+
+  .mobile-basket .basket-card h3,
+  .mobile-basket .basket-card__bottom strong {
+    font-size: 22px;
+  }
+
+  .mobile-basket .quantity-controls,
+  .mobile-basket .quantity-controls span {
+    font-size: 22px;
+  }
+
+  .mobile-basket .quantity-controls {
+    width: 43px;
+    height: 29px;
+    gap: 1px;
+  }
+
+  .mobile-basket .quantity-button {
+    width: 13px;
+    height: 29px;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    font-size: 16px;
+    line-height: 29px;
+  }
+
+  .mobile-basket .quantity-controls span {
+    width: 14px;
+    line-height: 29px;
+    text-align: center;
+  }
+
+  .mobile-basket .basket-sums {
+    height: auto;
+    margin-top: 18px;
+    font-size: 20px;
+  }
+
+  .mobile-basket .sum-row:not(.total) {
+    min-height: 28px;
+  }
+
+  .mobile-basket .sum-row.total {
+    min-height: 26px;
+    margin-top: 0;
+    padding-top: 8px;
+    font-size: 22px;
+  }
+
+  .mobile-basket .buy-button {
+    width: 233px;
+    max-width: 100%;
+    min-height: 53px;
+    height: 53px;
+    margin-top: 16px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 14px;
+    font-size: 19px;
+    gap: 0;
+  }
+
+  .mobile-basket .buy-button span {
+    min-width: auto;
+    white-space: nowrap;
+  }
+
+  .mobile-basket .buy-button__label {
+    flex: 0 1 auto;
+  }
+
+  .mobile-basket .buy-button__price {
+    flex-shrink: 0;
+    margin-left: 8px;
+  }
+
+  .mobile-basket .buy-button--compact {
+    padding-inline: 12px;
+    font-size: 18px;
+  }
+
+  .mobile-basket .buy-button--compact .buy-button__price {
+    margin-left: 6px;
   }
 
   .footer {
@@ -994,7 +1130,8 @@ h1 span {
 
   .meal-card img {
     display: block;
-    width: 100%;
+    width: 315px;
+    max-width: 100%;
     height: 86px;
     margin-bottom: 7px;
   }
@@ -1013,12 +1150,12 @@ h1 span {
 
   .meal-card h3 {
     margin-bottom: 3px;
-    font-size: 13px;
-    line-height: 1.12;
+    font-size: 29px;
+    line-height: 1.08;
   }
 
   .meal-card p {
-    font-size: 9px;
+    font-size: 16px;
     line-height: 1.18;
   }
 
@@ -1027,23 +1164,30 @@ h1 span {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    height: auto;
-    min-height: 24px;
+    width: 315px;
+    max-width: 100%;
+    height: 46px;
+    min-height: 46px;
     padding: 0;
   }
 
   .price {
-    min-width: 0;
-    font-size: 12px;
+    display: flex;
+    align-items: center;
+    width: 74px;
+    min-width: 74px;
+    height: 29px;
+    font-size: 24px;
     text-align: left;
   }
 
   .add-button {
-    min-width: 72px;
-    min-height: 22px;
-    padding: 4px 7px;
-    font-size: 9px;
+    width: 115px;
+    min-width: 115px;
+    height: 30px;
+    min-height: 30px;
+    padding: 0 7px;
+    font-size: 16px;
   }
 
   .mobile-basket-button {
@@ -1232,7 +1376,9 @@ h1 span {
   }
 
   .meal-card img {
-    height: 76px;
+    width: 315px;
+    max-width: 100%;
+    height: 86px;
   }
 
   .mobile-basket-button {
