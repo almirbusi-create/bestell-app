@@ -547,46 +547,52 @@ h1 span {
   display: grid;
   align-content: center;
   justify-items: center;
-  width: 335px;
+  width: 340px;
   max-width: calc(100vw - 32px);
-  min-height: 163px;
-  padding: 20px 16px 16px;
-  border-radius: 10px;
-  color: #fff;
+  height: 255px;
+  min-height: 255px;
+  padding: 54px 15px 27px;
+  border-radius: 26px;
+  color: #ffecdf;
   background: #302f2d;
   text-align: center;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
 }
 
 .confirmation h2 {
-  width: 100%;
-  margin: 5px 0 3px;
-  font-size: 27px;
-  line-height: 1;
+  width: 310px;
+  max-width: 100%;
+  margin: 16px 0 6px;
+  font-size: 36px;
+  line-height: 0.95;
   letter-spacing: 0;
-  white-space: nowrap;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .confirmation p {
-  width: 100%;
+  width: 310px;
+  max-width: 100%;
   margin: 0;
-  font-size: 19px;
+  font-size: 24px;
   line-height: 1;
   font-weight: 700;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .confirmation-truck-track {
-  width: 80px;
-  height: 34px;
-  margin: 0 auto 4px;
+  width: 315px;
+  max-width: 100%;
+  height: 57px;
+  margin: 0 auto;
   overflow: hidden;
 }
 
 .confirmation-truck {
   display: block;
-  width: 42px;
-  height: 31px;
+  width: 80px;
+  height: 57px;
   object-fit: cover;
   object-position: center;
   animation: driveRight 1150ms linear infinite;
@@ -601,17 +607,17 @@ h1 span {
   color: #fff;
   background: transparent;
   font-size: 16px;
-  line-height: 1;
+  line-height: 16px;
   padding: 0;
 }
 
 @keyframes driveRight {
   from {
-    transform: translateX(-52px) scaleX(-1);
+    transform: translateX(-90px) scaleX(-1);
   }
 
   to {
-    transform: translateX(86px) scaleX(-1);
+    transform: translateX(325px) scaleX(-1);
   }
 }
 
@@ -864,16 +870,17 @@ h1 span {
   }
 
   .mobile-basket .buy-button {
-    width: 233px;
+    width: max-content;
+    min-width: 233px;
     max-width: 100%;
     min-height: 53px;
     height: 53px;
     margin-top: 16px;
     margin-right: auto;
     margin-left: auto;
-    padding: 0 14px;
-    font-size: 19px;
-    gap: 0;
+    padding: 0 16px;
+    font-size: 24px;
+    gap: 10px;
   }
 
   .mobile-basket .buy-button span {
@@ -887,16 +894,12 @@ h1 span {
 
   .mobile-basket .buy-button__price {
     flex-shrink: 0;
-    margin-left: 8px;
+    margin-left: 0;
   }
 
   .mobile-basket .buy-button--compact {
-    padding-inline: 12px;
-    font-size: 18px;
-  }
-
-  .mobile-basket .buy-button--compact .buy-button__price {
-    margin-left: 6px;
+    padding-inline: 14px;
+    font-size: 24px;
   }
 
   .footer {
