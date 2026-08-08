@@ -1,4 +1,25 @@
 const basket = [];
+let lockedScrollY = 0;
+
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
+window.scrollTo(0, 0);
+
+function lockPageScroll() {
+  if (document.body.classList.contains("modal-open")) return;
+  lockedScrollY = window.scrollY;
+  document.body.style.top = `-${lockedScrollY}px`;
+  document.body.classList.add("modal-open");
+}
+
+function unlockPageScroll() {
+  if (!document.body.classList.contains("modal-open")) return;
+  document.body.classList.remove("modal-open");
+  document.body.style.top = "";
+  window.scrollTo(0, lockedScrollY);
+}
 
 function formatPrice(value) {
   return value.toFixed(2).replace(".", ",") + "€";
@@ -43,7 +64,7 @@ function removeFromBasket(mealId) {
   const index = basket.findIndex((item) => item.id === mealId);
   basket.splice(index, 1);
   updateView();
-  if (!basket.length) closeBasketDialog();
+  if (!basket.length && window.matchMedia("(max-width: 1270px)").matches) closeBasketDialog();
 }
 
 function getSubtotal() {
@@ -110,7 +131,8 @@ function buyNow() {
 }
 
 function showConfirmation() {
-  closeBasketDialog();
+  document.getElementById("basketDialog").classList.add("hidden");
+  lockPageScroll();
   document.getElementById("confirmationDialog").classList.remove("hidden");
   window.setTimeout(closeConfirmation, 3000);
 }
@@ -125,6 +147,24 @@ function updateView() {
   renderMenu();
   renderBaskets();
   updateMobileTotal();
+  updateDesktopBasketPosition();
+}
+
+function updateDesktopBasketPosition() {
+  const basketPanel = document.getElementById("basketPanel");
+  const pageLayout = document.querySelector(".page-layout");
+  if (!basketPanel || !pageLayout) return;
+  if (document.getElementById("basketDialog").classList.contains("hidden") &&
+    document.getElementById("confirmationDialog").classList.contains("hidden")) {
+    unlockPageScroll();
+  }
+  if (window.matchMedia("(max-width: 1270px)").matches) {
+    basketPanel.classList.remove("desktop-basket--stuck");
+    return;
+  }
+  const stickyTop = 24;
+  const layoutTop = pageLayout.getBoundingClientRect().top + window.scrollY;
+  basketPanel.classList.toggle("desktop-basket--stuck", window.scrollY >= layoutTop - stickyTop);
 }
 
 function bindDialogs() {
@@ -132,6 +172,8 @@ function bindDialogs() {
   document.getElementById("closeBasketButton").onclick = closeBasketDialog;
   document.getElementById("basketDialog").onclick = closeBasketFromBackdrop;
   document.getElementById("closeConfirmationButton").onclick = closeConfirmation;
+  window.addEventListener("scroll", updateDesktopBasketPosition);
+  window.addEventListener("resize", updateDesktopBasketPosition);
 }
 
 function closeBasketFromBackdrop(event) {
@@ -139,24 +181,27 @@ function closeBasketFromBackdrop(event) {
 }
 
 function openBasketDialog() {
-  if (window.matchMedia("(max-width: 900px)").matches) {
+  if (window.matchMedia("(max-width: 1270px)").matches) {
     document.getElementById("basketDialog").classList.remove("hidden");
     document.getElementById("basketPanel").classList.add("hidden");
+    lockPageScroll();
     return;
   }
   document.getElementById("basketPanel").classList.remove("hidden");
 }
 
 function closeBasketDialog() {
-  document.getElementById("basketPanel").classList.add("hidden");
   document.getElementById("basketDialog").classList.add("hidden");
+  unlockPageScroll();
 }
 
 function closeConfirmation() {
   document.getElementById("confirmationDialog").classList.add("hidden");
+  unlockPageScroll();
 }
 
 renderMenu();
 renderBaskets();
 bindDialogs();
 updateMobileTotal();
+updateDesktopBasketPosition();

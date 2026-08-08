@@ -18,6 +18,14 @@ body {
   user-select: none;
 }
 
+body.modal-open {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  touch-action: none;
+}
+
 button {
   border: 0;
   cursor: pointer;
@@ -399,8 +407,10 @@ h1 span {
   }
 
   .meal-list {
-    padding: 0 12px;
-    width: 100%;
+    width: min(712px, calc(100% - 24px));
+    max-width: calc(100% - 24px);
+    margin: 0 auto;
+    padding: 0;
   }
 
   .meal-card {
@@ -417,13 +427,27 @@ h1 span {
     height: 86px;
   }
 
-  .meal-actions {
-    grid-column: 1 / -1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .meal-info {
+    grid-column: 2;
+    grid-template-columns: minmax(0, 1fr) 115px;
     width: 100%;
-    min-height: 30px;
+    height: auto;
+  }
+
+  .meal-text {
+    width: auto;
+    height: auto;
+    padding-top: 7px;
+  }
+
+  .meal-actions {
+    grid-column: auto;
+    display: grid;
+    align-self: stretch;
+    justify-items: end;
+    align-content: space-between;
+    width: 115px;
+    min-height: 106px;
   }
 
   .footer {

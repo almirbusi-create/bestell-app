@@ -10,26 +10,38 @@
 }
 
 .desktop-basket {
-  position: sticky;
+  position: absolute;
   top: 0;
+  right: 0;
   grid-column: 2;
   grid-row: 1;
-  justify-self: end;
   z-index: 25;
   width: 435px;
   height: 794px;
   padding: 72px 42px 58px 53px;
   border-radius: 28px 0 0 28px;
-  max-height: calc(100vh - 24px);
+  max-height: none;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  overflow-x: hidden;
+  overflow: visible;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.desktop-basket--stuck {
+  position: fixed;
+  top: 24px;
+  right: max(0px, calc((100vw - 1440px) / 2));
 }
 
 .desktop-basket:not(.hidden) {
   display: flex;
+}
+
+@media (min-width: 1271px) {
+  .desktop-basket.hidden {
+    display: flex !important;
+  }
 }
 
 .basket h2 {
@@ -130,13 +142,17 @@
 
 .delete-button,
 .quantity-button {
-  width: 18px;
-  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   color: #2f2925;
   background: #fff;
-  font-size: 10px;
+  font-size: 16px;
   font-weight: 800;
+  line-height: 1;
 }
 
 .basket-card__delete {
@@ -147,7 +163,7 @@
 .quantity-controls {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-size: 13px;
 }
 
@@ -301,27 +317,9 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1270px) {
   .desktop-basket {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: auto;
-    width: min(435px, calc(100vw - 24px));
-    padding: 72px clamp(20px, 7vw, 42px) 58px clamp(20px, 8vw, 53px);
-    border-radius: 28px 0 0 28px;
-    max-height: calc(100vh - 110px);
-    overflow-y: auto;
-  }
-
-  .desktop-basket h2,
-  .desktop-basket .basket-scroll,
-  .desktop-basket .basket-items,
-  .desktop-basket .basket-card,
-  .desktop-basket .basket-sums,
-  .desktop-basket .buy-button {
-    width: 100%;
-    max-width: 100%;
+    display: none !important;
   }
 
   .mobile-basket-button {
@@ -354,6 +352,7 @@
   }
 
   .mobile-nav-item {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -369,8 +368,8 @@
 
   .mobile-nav-item--basket strong {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -7px;
+    right: -9px;
     display: none;
     align-items: center;
     justify-content: center;
@@ -382,7 +381,6 @@
     background: #ffecdf;
     font-size: 14px;
     line-height: 1;
-    transform: translate(45%, -45%);
   }
 
   .mobile-nav-item--basket strong:not(:empty) {
@@ -397,17 +395,17 @@
     position: relative;
     --mobile-basket-content-width: min(300px, calc(100vw - 76px));
     width: min(343px, calc(100vw - 32px));
-    height: 662px;
-    min-height: 662px;
+    height: min(662px, calc(100vh - 32px));
+    min-height: 0;
     max-height: calc(100vh - 32px);
     padding: 43px clamp(16px, 5vw, 21px) 41px clamp(16px, 5vw, 22px);
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
   }
 
   .mobile-basket .close-button {
-    top: 29px;
-    right: 31px;
+    top: 18px;
+    right: 18px;
     width: 24px;
     height: 24px;
     font-size: 24px;
@@ -434,7 +432,7 @@
 
   .mobile-basket .basket-items {
     gap: 10px;
-    max-height: 359px;
+    max-height: min(300px, calc(100vh - 330px));
     padding-right: 0;
   }
 
@@ -443,14 +441,14 @@
   }
 
   .mobile-basket .basket-card {
-    min-height: 123px;
-    height: 123px;
-    padding: 18px 17px 14px;
+    min-height: 94px;
+    height: auto;
+    padding: 14px 15px 12px;
   }
 
   .mobile-basket .basket-card h3,
   .mobile-basket .basket-card__bottom strong {
-    font-size: 22px;
+    font-size: 18px;
   }
 
   .mobile-basket .basket-card__top {
@@ -465,34 +463,34 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
     margin-top: 1px;
     border-radius: 50%;
     background: #fff;
-    font-size: 10px;
-    line-height: 18px;
+    font-size: 16px;
+    line-height: 1;
   }
 
   .mobile-basket .quantity-controls,
   .mobile-basket .quantity-controls span {
-    font-size: 22px;
+    font-size: 18px;
   }
 
   .mobile-basket .quantity-controls {
-    width: 43px;
+    width: 70px;
     height: 29px;
-    gap: 1px;
+    gap: 6px;
   }
 
   .mobile-basket .quantity-button {
-    width: 13px;
-    height: 29px;
+    width: 24px;
+    height: 24px;
     padding: 0;
-    border-radius: 0;
-    background: transparent;
+    border-radius: 50%;
+    background: #fff;
     font-size: 16px;
-    line-height: 29px;
+    line-height: 1;
   }
 
   .mobile-basket .quantity-controls span {
@@ -503,8 +501,8 @@
 
   .mobile-basket .basket-sums {
     height: auto;
-    margin-top: 18px;
-    font-size: 20px;
+    margin-top: 14px;
+    font-size: 18px;
   }
 
   .mobile-basket .sum-row:not(.total) {
@@ -515,18 +513,18 @@
     min-height: 26px;
     margin-top: 0;
     padding-top: 8px;
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .mobile-basket .buy-button {
     min-width: 0;
     min-height: 53px;
     height: 53px;
-    margin-top: 16px;
+    margin-top: 12px;
     margin-right: auto;
     margin-left: auto;
     padding: 0 16px;
-    font-size: clamp(18px, 6vw, 24px);
+    font-size: clamp(18px, 5.4vw, 22px);
     gap: 6px;
   }
 
@@ -569,9 +567,80 @@
   }
 }
 
+@media (max-width: 1270px) and (max-height: 700px) {
+  .mobile-basket {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    padding: 28px 24px 24px;
+    overflow: visible;
+  }
+
+  .mobile-basket .close-button {
+    top: 18px;
+    right: 22px;
+  }
+
+  .mobile-basket h2 {
+    height: auto;
+    margin-bottom: 14px;
+    font-size: 28px;
+  }
+
+  .mobile-basket .basket-empty {
+    min-height: 260px;
+  }
+
+  .mobile-basket .basket-empty img {
+    width: 84px;
+  }
+
+  .mobile-basket .basket-items {
+    max-height: 170px;
+  }
+
+  .mobile-basket .basket-card {
+    min-height: 82px;
+    height: auto;
+    padding: 12px 14px;
+  }
+
+  .mobile-basket .basket-card h3,
+  .mobile-basket .basket-card__bottom strong {
+    font-size: 16px;
+  }
+
+  .mobile-basket .quantity-controls,
+  .mobile-basket .quantity-controls span {
+    font-size: 16px;
+  }
+
+  .mobile-basket .basket-sums {
+    margin-top: 14px;
+    font-size: 16px;
+  }
+
+  .mobile-basket .sum-row:not(.total) {
+    min-height: 24px;
+  }
+
+  .mobile-basket .sum-row.total {
+    min-height: 24px;
+    font-size: 18px;
+  }
+
+  .mobile-basket .buy-button {
+    min-height: 44px;
+    height: 44px;
+    margin-top: 12px;
+    font-size: 18px;
+  }
+}
+
 @media (max-width: 360px) {
   .mobile-basket .close-button {
-    top: 14px;
+    top: 10px;
+    right: 12px;
   }
 
   .confirmation {
