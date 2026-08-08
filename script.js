@@ -183,8 +183,11 @@ function createEmptyBasketTemplate() {
 
 function createBasketItemTemplate(item) {
   const meal = getMeal(item.id);
+  const deleteButton = item.quantity > 1
+    ? `<button class="delete-button basket-card__delete" aria-label="Gericht komplett entfernen" onclick="removeFromBasket('${item.id}')">🗑</button>`
+    : "";
   return `<article class="basket-card"><div class="basket-card__top">
-    <h3>${item.quantity} x ${meal.name}</h3></div>
+    <h3>${item.quantity} x ${meal.name}</h3>${deleteButton}</div>
     <div class="basket-card__bottom">${createQuantityTemplate(item)}
     <strong>${formatPrice(meal.price * item.quantity)}</strong></div></article>`;
 }

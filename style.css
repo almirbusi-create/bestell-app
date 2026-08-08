@@ -5,6 +5,7 @@
 }
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -12,6 +13,7 @@ body {
   color: #2f2925;
   background: #bfbfbf;
   font-family: "Palanquin", Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 button {
@@ -355,9 +357,13 @@ h1 span {
   z-index: 25;
   width: 435px;
   height: 794px;
+  padding: 72px 42px 58px 53px;
+  border-radius: 28px 0 0 28px;
   max-height: calc(100vh - 24px);
   display: flex;
   flex-direction: column;
+  align-items: stretch;
+  overflow-x: hidden;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
 }
 
@@ -368,9 +374,9 @@ h1 span {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 178px;
+  width: 340px;
   height: 41px;
-  margin: 0 auto 20px;
+  margin: 0 0 35px;
   text-align: center;
   font-size: 32px;
   line-height: 1;
@@ -395,11 +401,11 @@ h1 span {
 
 .basket-items {
   display: grid;
-  gap: 8px;
+  gap: 10px;
   width: 100%;
   max-height: 281px;
   overflow-y: auto;
-  padding-right: 13px;
+  padding-right: 0;
   scrollbar-width: none;
 }
 
@@ -411,7 +417,7 @@ h1 span {
 .basket-scrollbar {
   position: absolute;
   top: 0;
-  right: 2px;
+  right: -18px;
   width: 6px;
   height: 100%;
 }
@@ -430,9 +436,10 @@ h1 span {
 }
 
 .basket-card {
-  min-height: 90px;
-  padding: 16px 14px 12px;
-  border-radius: 8px;
+  width: 340px;
+  min-height: 103px;
+  padding: 20px 20px 18px;
+  border-radius: 16px;
   color: #2f2925;
   background: #fff0e5;
 }
@@ -445,10 +452,17 @@ h1 span {
   gap: 12px;
 }
 
+.desktop-basket .basket-card__bottom strong,
+.desktop-basket .sum-row span:last-child {
+  flex: 0 0 auto;
+  text-align: right;
+}
+
 .basket-card h3 {
   margin: 0 0 10px;
+  min-width: 0;
   font-size: 22px;
-  line-height: 1.05;
+  line-height: 1.2;
 }
 
 .delete-button,
@@ -460,6 +474,11 @@ h1 span {
   background: #fff;
   font-size: 10px;
   font-weight: 800;
+}
+
+.basket-card__delete {
+  flex: 0 0 auto;
+  align-self: flex-start;
 }
 
 .quantity-controls {
@@ -476,19 +495,19 @@ h1 span {
 
 .basket-sums {
   display: grid;
-  gap: 9px;
+  gap: 8px;
   width: 340px;
-  height: 208px;
-  margin-top: 22px;
+  height: auto;
+  margin-top: 38px;
   padding-top: 0;
   font-size: 20px;
 }
 
 .sum-row.total {
-  margin-top: 5px;
-  padding-top: 11px;
+  margin-top: 8px;
+  padding-top: 14px;
   border-top: 2px solid #ffecdf;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 800;
 }
 
@@ -496,14 +515,15 @@ h1 span {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  width: max-content;
-  margin-top: 18px;
-  min-height: 70px;
-  padding: 14px 20px;
+  gap: 6px;
+  width: 340px;
+  max-width: 340px;
+  margin: 30px auto 0;
+  min-height: 56px;
+  padding: 10px 14px;
   color: #fff;
   background: #f36a12;
-  font-size: 32px;
+  font-size: 24px;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
@@ -517,9 +537,9 @@ h1 span {
 }
 
 .buy-button--compact {
-  gap: 14px;
-  padding-inline: 18px;
-  font-size: 32px;
+  gap: 6px;
+  padding-inline: 14px;
+  font-size: 24px;
 }
 
 .mobile-basket-button {
@@ -647,10 +667,24 @@ h1 span {
 
   .desktop-basket {
     position: fixed;
-    inset: auto 14px 78px;
-    width: auto;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    width: min(435px, calc(100vw - 24px));
+    padding: 72px clamp(20px, 7vw, 42px) 58px clamp(20px, 8vw, 53px);
+    border-radius: 28px 0 0 28px;
     max-height: calc(100vh - 110px);
     overflow-y: auto;
+  }
+
+  .desktop-basket h2,
+  .desktop-basket .basket-scroll,
+  .desktop-basket .basket-items,
+  .desktop-basket .basket-card,
+  .desktop-basket .basket-sums,
+  .desktop-basket .buy-button {
+    width: 100%;
+    max-width: 100%;
   }
 
   .hero-image {
@@ -780,12 +814,13 @@ h1 span {
 
   .mobile-basket {
     position: relative;
-    width: 343px;
-    max-width: calc(100vw - 32px);
+    --mobile-basket-content-width: min(300px, calc(100vw - 76px));
+    width: min(343px, calc(100vw - 32px));
     height: 662px;
     min-height: 662px;
     max-height: calc(100vh - 32px);
-    padding: 43px 21px 41px 22px;
+    padding: 43px clamp(16px, 5vw, 21px) 41px clamp(16px, 5vw, 22px);
+    overflow-x: hidden;
     overflow-y: auto;
   }
 
@@ -799,7 +834,7 @@ h1 span {
   }
 
   .mobile-basket h2 {
-    width: 300px;
+    width: var(--mobile-basket-content-width);
     max-width: 100%;
     height: 32px;
     margin-bottom: 16px;
@@ -811,7 +846,7 @@ h1 span {
   .mobile-basket .basket-scroll,
   .mobile-basket .basket-items,
   .mobile-basket .basket-sums {
-    width: 300px;
+    width: var(--mobile-basket-content-width);
     max-width: 100%;
   }
 
@@ -826,7 +861,7 @@ h1 span {
   }
 
   .mobile-basket .basket-card {
-    width: 300px;
+    width: var(--mobile-basket-content-width);
     max-width: 100%;
     min-height: 123px;
     height: 123px;
@@ -836,6 +871,27 @@ h1 span {
   .mobile-basket .basket-card h3,
   .mobile-basket .basket-card__bottom strong {
     font-size: 22px;
+  }
+
+  .mobile-basket .basket-card__top {
+    align-items: flex-start;
+  }
+
+  .mobile-basket .basket-card h3 {
+    padding-right: 8px;
+  }
+
+  .mobile-basket .basket-card__delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    margin-top: 1px;
+    border-radius: 50%;
+    background: #fff;
+    font-size: 10px;
+    line-height: 18px;
   }
 
   .mobile-basket .quantity-controls,
@@ -883,17 +939,17 @@ h1 span {
   }
 
   .mobile-basket .buy-button {
-    width: max-content;
-    min-width: 233px;
-    max-width: 100%;
+    width: var(--mobile-basket-content-width);
+    min-width: 0;
+    max-width: var(--mobile-basket-content-width);
     min-height: 53px;
     height: 53px;
     margin-top: 16px;
     margin-right: auto;
     margin-left: auto;
     padding: 0 16px;
-    font-size: 24px;
-    gap: 10px;
+    font-size: clamp(18px, 6vw, 24px);
+    gap: 6px;
   }
 
   .mobile-basket .buy-button span {
@@ -950,12 +1006,14 @@ h1 span {
 @media (max-width: 600px) {
   body {
     padding: 22px 0 78px;
+    background: #fff;
   }
 
   .topbar,
   main,
   .footer {
-    width: min(100% - 32px, 375px);
+    width: 100%;
+    max-width: 375px;
   }
 
   .topbar {
@@ -1214,8 +1272,8 @@ h1 span {
     left: 0;
     z-index: 45;
     justify-content: space-around;
-    width: 375px;
-    max-width: calc(100% - 32px);
+    width: 100%;
+    max-width: 375px;
     height: 78px;
     min-height: 78px;
     margin: 0 auto;
@@ -1242,8 +1300,8 @@ h1 span {
     align-items: center;
     justify-content: center;
     gap: 4px;
-    width: 375px;
-    max-width: calc(100% - 32px);
+    width: 100%;
+    max-width: 375px;
     height: 128px;
     min-height: 128px;
     margin-top: 0;
@@ -1279,10 +1337,36 @@ h1 span {
     padding-bottom: 60px;
   }
 
+  .mobile-basket .close-button {
+    top: 14px;
+  }
+
+  .confirmation {
+    width: min(280px, calc(100vw - 32px));
+    padding: 50px 14px 24px;
+  }
+
+  .confirmation h2 {
+    width: 100%;
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .confirmation p {
+    width: 100%;
+    font-size: 18px;
+    line-height: 1.1;
+  }
+
+  .confirmation-truck-track {
+    width: 100%;
+  }
+
   .topbar,
   main,
   .footer {
-    width: min(100% - 24px, 320px);
+    width: 100%;
+    max-width: 320px;
   }
 
   .topbar__inner {
@@ -1416,12 +1500,14 @@ h1 span {
   }
 
   .mobile-basket-button {
-    right: 12px;
+    right: 0;
     bottom: 0;
-    left: 12px;
-    width: auto;
+    left: 0;
+    width: 100%;
+    max-width: 320px;
     height: 60px;
     min-height: 60px;
+    margin: 0 auto;
     padding: 0 20px;
   }
 
