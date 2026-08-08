@@ -94,9 +94,9 @@ main {
   width: 200px;
   height: 200px;
   margin-top: -100px;
-  border: 8px solid #fff;
+  border: 8px solid #ffe2cf;
   border-radius: 50%;
-  background: #fff;
+  background: #ffe2cf;
   object-fit: cover;
 }
 
