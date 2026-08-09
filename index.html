@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bestell App | BurgerHouse</title>
-    <link rel="icon" type="image/png" href="./assets/logo/logo%20burger.png.png?v=138">
-    <link rel="stylesheet" href="./style.css?v=170" />
-    <link rel="stylesheet" href="./styles/basket.css?v=171" />
-    <script src="./scripts/data.js?v=150" defer></script>
-    <script src="./scripts/templates.js?v=150" defer></script>
-    <script src="./scripts/script.js?v=170" defer></script>
+    <link rel="icon" type="image/png" href="./assets/logo/logo%20burger.png.png">
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./styles/basket.css" />
+    <script src="./script.js"></script>
 
 </head>
-<body>
+<body onload="init()">
     <header class="topbar">
         <div class="topbar__inner">
          <img class="brand-logo" src="./assets/logo/Logo 02.png" alt="Bestell-App Logo" />
@@ -63,7 +61,7 @@
 
     <div class="dialog-backdrop hidden" id="basketDialog">
       <aside class="basket mobile-basket" aria-label="Mobiler Warenkorb">
-        <button class="close-button" id="closeBasketButton" type="button" aria-label="Warenkorb schließen">×</button>
+        <button class="close-button" id="closeBasketButton" type="button" onclick="closeBasketDialog()" aria-label="Warenkorb schließen">×</button>
         <div id="mobileBasket"></div>
       </aside>
     </div>

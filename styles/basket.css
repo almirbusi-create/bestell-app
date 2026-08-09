@@ -38,12 +38,6 @@
   display: flex;
 }
 
-@media (min-width: 1271px) {
-  .desktop-basket.hidden {
-    display: flex !important;
-  }
-}
-
 .basket h2 {
   display: flex;
   align-items: center;
